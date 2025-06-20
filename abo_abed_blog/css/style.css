@@ -1,0 +1,2018 @@
+/* === Global Resets & Base Styles === */
+:root {
+    --primary-color: #007bff; /* Example: Blue */
+    --secondary-color: #6c757d; /* Example: Gray */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #f8f9fa;
+    --footer-bg: #343a40;
+    --footer-text-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --card-border: #e0e0e0;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --button-bg: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-bg: #0056b3;
+    --font-family-arabic: 'Noto Sans Arabic', 'Tahoma', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family-arabic);
+    direction: rtl;
+    text-align: right;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.tool-icon-img { /* Style for tool icons if they are images */
+    width: 48px; /* Adjust as needed */
+    height: 48px;
+    margin: 0 auto 1rem; /* Center icon */
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* === Buttons === */
+.button-primary, .button-secondary {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.button-primary {
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-bg);
+}
+.button-primary:hover {
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-bg);
+    color: var(--button-text-color);
+    text-decoration: none;
+}
+.button-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.button-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+}
+
+
+/* === Notification Bar === */
+.notification-bar {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+.notification-bar p {
+    margin-bottom: 0;
+}
+
+/* === Header === */
+header {
+    background-color: var(--header-bg);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--card-border);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* Add gap between header items */
+}
+
+/* Header Search Form */
+.blog-search-form {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--card-border);
+    border-radius: 20px; /* Rounded search bar */
+    padding: 0.3rem 0.3rem 0.3rem 0.8rem; /* Adjust padding for RTL */
+    background-color: var(--background-color);
+    max-width: 280px; /* Limit width */
+}
+html[dir="rtl"] .blog-search-form {
+    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+}
+
+.blog-search-form input[type="search"] {
+    border: none;
+    outline: none;
+    padding: 0.4rem 0.5rem;
+    font-family: var(--font-family-arabic);
+    font-size: 0.9rem;
+    background-color: transparent;
+    flex-grow: 1;
+}
+
+.blog-search-form button[type="submit"] {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    padding: 0.3rem 0.6rem; /* Adjust padding for better spacing */
+    cursor: pointer;
+    display: flex; /* Align icon center */
+    align-items: center;
+    justify-content: center;
+}
+.blog-search-form button[type="submit"]:hover {
+    color: var(--primary-color);
+}
+.blog-search-form button[type="submit"] svg {
+    width: 1em; /* Use em for responsive icon size */
+    height: 1em;
+}
+
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 20px; /* Reversed for RTL */
+}
+header nav ul li:last-child {
+    margin-right: 0;
+}
+
+header nav ul li a {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.5rem 0;
+    position: relative;
+}
+header nav ul li a.active,
+header nav ul li a:hover {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+header nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0; /* Adjusted for RTL */
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+
+.theme-button {
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-family-arabic);
+}
+.theme-button:hover {
+    background-color: #5a6268;
+}
+
+/* === Hero Section === */
+.hero {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    padding: 4rem 0;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-button {
+    background-color: var(--button-text-color);
+    color: var(--primary-color);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #f0f0f0;
+    color: var(--link-hover-color);
+    text-decoration: none;
+}
+
+/* === Page Specific Headers (for subpages) === */
+.page-header {
+    background-color: var(--header-bg); /* Lighter than hero */
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 2.5rem;
+}
+.page-header h1 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+.page-content { /* Wrapper for main content on subpages */
+    padding-bottom: 2rem; /* Ensure space before footer */
+}
+
+
+/* === Sections General Styling === */
+.latest-articles, .featured-tools, .mysterious-links-section, .articles-list, .tools-section, .links-list-section, .contact-form-section, .contact-info-section {
+    padding: 2rem 0; /* Reduced padding for sections within page-content */
+}
+.latest-articles h2, .featured-tools h2, .mysterious-links-section h2 { /* For homepage sections */
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* === React Admin Panel Specific Styles === */
+html.admin-html, body.admin-body, #root {
+    height: 100%;
+    margin: 0;
+    /* overflow-x: hidden; /* Prevent horizontal scroll if sidebar/content slightly overflows */
+}
+body.admin-body { /* Apply this class to body in admin_dashboard.html if needed, or target body directly if only one html */
+    display: flex; /* Make body a flex container for #root */
+    flex-direction: column;
+}
+
+#root {
+    display: flex; /* Make #root a flex container for admin-layout */
+    flex: 1; /* Allow #root to grow and fill body */
+}
+
+.admin-layout {
+    display: flex;
+    flex: 1; /* Allow admin-layout to grow and fill #root */
+    width: 100%; /* Ensure it takes full width */
+    background-color: var(--background-color); /* Ensure admin area has a background */
+}
+
+.sidebar {
+    min-width: 260px; /* Increased min-width slightly */
+    width: 260px;
+    background-color: var(--header-bg); /* Sidebar bg same as header */
+    padding: 1.5rem; /* Increased padding */
+    border-left: 1px solid var(--card-border); /* For RTL */
+    height: 100%; /* Full height */
+    overflow-y: auto; /* Scroll if content overflows */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+html[dir="ltr"] .sidebar { /* For LTR if ever used */
+    border-right: 1px solid var(--card-border);
+    border-left: none;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+}
+
+.admin-content {
+    flex-grow: 1;
+    padding: 2rem; /* Increased padding */
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.sidebar-header h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem; /* Slightly larger */
+    margin: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 0.85rem 1.2rem; /* Increased padding */
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 6px; /* Slightly more rounded */
+    margin-bottom: 0.6rem; /* Increased margin */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-weight: 500; /* Medium weight */
+}
+
+.sidebar-nav li a:hover {
+    background-color: rgba(0, 123, 255, 0.08); /* Lighter primary hover */
+    color: var(--primary-color);
+}
+
+/* Active NavLink style is defined inline in Sidebar.jsx using a style prop */
+/* Example for a class-based active state if preferred:
+.sidebar-nav li a.active-nav-link {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    font-weight: bold;
+}
+*/
+
+.sidebar-footer {
+    margin-top: auto; /* Pushes footer to bottom of sidebar */
+    padding-top: 1.5rem; /* Increased padding */
+    border-top: 1px solid var(--card-border);
+    text-align: center;
+}
+.sidebar-footer .button-secondary {
+    width: 100%; /* Make button full width */
+}
+
+
+/* Dark Mode for Admin Panel */
+body.dark-mode .admin-layout {
+    background-color: var(--background-color);
+}
+body.dark-mode .sidebar {
+    background-color: var(--header-bg);
+    border-left-color: var(--card-border);
+}
+html[dir="ltr"].dark-mode .sidebar {
+    border-right-color: var(--card-border);
+}
+
+body.dark-mode .sidebar-header h3 {
+     color: var(--primary-color);
+}
+body.dark-mode .sidebar-nav li a {
+    color: var(--text-color);
+}
+body.dark-mode .sidebar-nav li a:hover {
+    background-color: rgba(58, 158, 255, 0.15); /* Adjusted hover for dark primary */
+    color: var(--primary-color);
+}
+/* Example for class-based active state in dark mode:
+body.dark-mode .sidebar-nav li a.active-nav-link {
+    background-color: var(--primary-color);
+    color: var(--background-color); /* Text color for dark active link */
+}
+*/
+body.dark-mode .sidebar-footer {
+    border-top-color: var(--card-border);
+}
+
+/* === Admin Panel General Section/Card Styles === */
+.admin-page h1 { /* Standard h1 for admin pages */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+.admin-page p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+.settings-section, .admin-section { /* Common class for sections in admin pages */
+    background-color: var(--card-bg);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 2.5rem;
+}
+.settings-section h2, .admin-section h2 {
+    font-size: 1.4rem; /* Slightly smaller h2 for sections */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+}
+.settings-section .form-group, .admin-section .form-group { /* Consistent form group styling */
+    margin-bottom: 1.2rem;
+}
+.settings-section .form-group label, .admin-section .form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.settings-section .form-group input[type="text"],
+.settings-section .form-group input[type="email"],
+.settings-section .form-group input[type="number"],
+.settings-section .form-group input[type="url"],
+.settings-section .form-group select,
+.settings-section .form-group textarea,
+.admin-section .form-group input[type="text"],
+.admin-section .form-group input[type="email"],
+.admin-section .form-group input[type="number"],
+.admin-section .form-group input[type="url"],
+.admin-section .form-group select,
+.admin-section .form-group textarea {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: var(--background-color); /* Ensure inputs have bg color */
+    color: var(--text-color); /* Ensure text color for inputs */
+}
+.settings-section .form-group input[type="text"]:focus,
+.settings-section .form-group input[type="email"]:focus,
+.settings-section .form-group input[type="number"]:focus,
+.settings-section .form-group input[type="url"]:focus,
+.settings-section .form-group select:focus,
+.settings-section .form-group textarea:focus,
+.admin-section .form-group input[type="text"]:focus,
+.admin-section .form-group input[type="email"]:focus,
+.admin-section .form-group input[type="number"]:focus,
+.admin-section .form-group input[type="url"]:focus,
+.admin-section .form-group select:focus,
+.admin-section .form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+.settings-section .form-group textarea, .admin-section .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.settings-section .form-group small, .admin-section .form-group small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+}
+.settings-section .form-actions, .admin-section .form-actions { /* Consistent form actions styling */
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+.data-table { /* Common style for tables in admin */
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 1.5rem;
+}
+.data-table th,
+.data-table td {
+    border: 1px solid var(--card-border);
+    padding: 0.8rem 1rem;
+    text-align: right;
+    vertical-align: middle;
+}
+.data-table th {
+    background-color: var(--header-bg);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.data-table td {
+    font-size: 0.9rem;
+}
+.data-table .actions-cell {
+    text-align: center;
+    white-space: nowrap;
+}
+.data-table .actions-cell .button-edit,
+.data-table .actions-cell .button-delete {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin: 0 0.25rem;
+}
+
+/* Dark Mode for Admin Panel General Sections */
+body.dark-mode .settings-section, body.dark-mode .admin-section {
+    background-color: var(--card-bg);
+}
+body.dark-mode .settings-section h2, body.dark-mode .admin-section h2 {
+    border-bottom-color: var(--card-border);
+}
+body.dark-mode .settings-section .form-group label, body.dark-mode .admin-section .form-group label {
+    color: var(--text-color);
+}
+body.dark-mode .settings-section .form-group input[type="text"],
+body.dark-mode .settings-section .form-group input[type="email"],
+body.dark-mode .settings-section .form-group input[type="number"],
+body.dark-mode .settings-section .form-group input[type="url"],
+body.dark-mode .settings-section .form-group select,
+body.dark-mode .settings-section .form-group textarea,
+body.dark-mode .admin-section .form-group input[type="text"],
+body.dark-mode .admin-section .form-group input[type="email"],
+body.dark-mode .admin-section .form-group input[type="number"],
+body.dark-mode .admin-section .form-group input[type="url"],
+body.dark-mode .admin-section .form-group select,
+body.dark-mode .admin-section .form-group textarea {
+    background-color: #333;
+    border-color: #555;
+    color: var(--text-color);
+}
+body.dark-mode .settings-section .form-group input[type="text"]:focus,
+body.dark-mode .settings-section .form-group input[type="email"]:focus,
+body.dark-mode .settings-section .form-group input[type="number"]:focus,
+body.dark-mode .settings-section .form-group input[type="url"]:focus,
+body.dark-mode .settings-section .form-group select:focus,
+body.dark-mode .settings-section .form-group textarea:focus,
+body.dark-mode .admin-section .form-group input[type="text"]:focus,
+body.dark-mode .admin-section .form-group input[type="email"]:focus,
+body.dark-mode .admin-section .form-group input[type="number"]:focus,
+body.dark-mode .admin-section .form-group input[type="url"]:focus,
+body.dark-mode .admin-section .form-group select:focus,
+body.dark-mode .admin-section .form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(58, 158, 255, 0.2);
+}
+body.dark-mode .settings-section .form-group small, body.dark-mode .admin-section .form-group small {
+    color: var(--secondary-color);
+}
+body.dark-mode .data-table th,
+body.dark-mode .data-table td {
+    border-color: #555;
+}
+body.dark-mode .data-table th {
+    background-color: #2c2c2c;
+}
+
+
+/* === Manage Content Page Specific Styles === */
+.manage-content-page .content-form-section { /* Uses .admin-section styles */
+    /* It inherits from .admin-section now, so specific styles can be overrides or additions */
+}
+.articles-table-section { /* Uses .admin-section styles */
+    /* Specific table section styles if needed */
+}
+.articles-table { /* Uses .data-table styles */
+    /* Specific article table styles if needed */
+}
+
+
+/* === Statistics Page Specific Styles === */
+.stats-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.stat-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    border: 1px solid var(--card-border);
+}
+.stat-card h3 {
+    font-size: 1rem; /* Smaller heading for stat cards */
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.stat-card .stat-value {
+    font-size: 1.8rem; /* Larger value */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+.stat-card .stat-change {
+    font-size: 0.9rem;
+}
+.stat-card .stat-change.positive {
+    color: #28a745; /* Green */
+}
+.stat-card .stat-change.negative {
+    color: #dc3545; /* Red */
+}
+.charts-placeholder .chart-item {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--card-border);
+}
+.charts-placeholder .chart-item p {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Dark Mode for Statistics Page */
+body.dark-mode .stat-card {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+body.dark-mode .stat-card h3 {
+    color: var(--secondary-color);
+}
+body.dark-mode .stat-card .stat-value {
+    color: var(--primary-color);
+}
+body.dark-mode .charts-placeholder .chart-item {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+
+/* === Settings Page Specific Styles === */
+/* Settings page uses .settings-section and general form styles from Admin Panel General Styles */
+.settings-form .form-group label input[type="checkbox"] {
+    width: auto; /* Override full width for checkboxes */
+    margin-left: 0.5rem; /* For RTL, checkbox on right, label text on left */
+}
+html[dir="rtl"] .settings-form .form-group label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+
+/* === Notifications Page Specific Styles === */
+.notification-form-section, .current-notifications-section { /* Uses .admin-section styles */
+    /* Specific styles if needed */
+}
+.notifications-table { /* Uses .data-table styles */
+ /* Specific styles for notification types */
+}
+.notifications-table .notification-type-info td:first-child { border-right: 3px solid #17a2b8; } /* Blue */
+.notifications-table .notification-type-warning td:first-child { border-right: 3px solid #ffc107; } /* Yellow */
+.notifications-table .notification-type-error td:first-child { border-right: 3px solid #dc3545; } /* Red */
+.notifications-table .notification-type-success td:first-child { border-right: 3px solid #28a745; } /* Green */
+
+html[dir="ltr"] .notifications-table .notification-type-info td:first-child { border-left: 3px solid #17a2b8; border-right:none; }
+html[dir="ltr"] .notifications-table .notification-type-warning td:first-child { border-left: 3px solid #ffc107; border-right:none; }
+html[dir="ltr"] .notifications-table .notification-type-error td:first-child { border-left: 3px solid #dc3545; border-right:none; }
+html[dir="ltr"] .notifications-table .notification-type-success td:first-child { border-left: 3px solid #28a745; border-right:none; }
+
+
+/* === SEO Control Page Specific Styles === */
+.seo-tools-grid { /* Uses .tools-grid styles, but for placeholders */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.tool-card-placeholder { /* Similar to .tool-card but for non-interactive placeholders */
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.tool-card-placeholder h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+.tool-card-placeholder p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+body.dark-mode .tool-card-placeholder {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+}
+body.dark-mode .tool-card-placeholder p {
+    color: #bbb;
+}
+
+
+/* === Monetization Page Specific Styles === */
+.ad-zones-management .ad-zone-item { /* Uses .form-group styles */
+    padding: 1rem;
+    border: 1px dashed var(--card-border);
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+.ad-zones-management .ad-zone-item label {
+    font-weight: bold;
+    display: flex; /* Align checkbox and text */
+    align-items: center;
+}
+.ad-zones-management .ad-zone-item input[type="checkbox"] {
+    width: auto;
+    margin-left: 0.75rem; /* For RTL */
+}
+html[dir="rtl"] .ad-zones-management .ad-zone-item input[type="checkbox"] {
+     margin-right: 0.75rem;
+     margin-left: 0;
+}
+.ad-zones-management .ad-zone-item textarea {
+    margin-top: 0.75rem;
+    min-height: 120px; /* Good height for ad codes */
+    font-family: 'Courier New', Courier, monospace; /* Monospace for code */
+    font-size: 0.85rem;
+    direction: ltr; /* Ad codes are usually LTR */
+    text-align: left;
+}
+.affiliate-links-table { /* Uses .data-table styles */
+    /* Specific styles if needed */
+}
+
+body.dark-mode .ad-zones-management .ad-zone-item {
+    border-color: var(--card-border);
+}
+
+
+/* === Back to Top Button === */
+#back-to-top {
+    display: none; /* Hidden by default, shown by JS */
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Adjusted for RTL, will be on the left */
+    z-index: 1000;
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 50px;
+    height: 50px;
+    font-size: 24px; /* Arrow size */
+    line-height: 50px; /* Center arrow vertically */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, opacity 0.3s, visibility 0.3s;
+}
+
+#back-to-top:hover {
+    background-color: var(--button-hover-bg);
+}
+
+#back-to-top.show-back-to-top {
+    display: block;
+}
+
+/* Adjust for RTL: place button on the right */
+html[dir="rtl"] #back-to-top {
+    right: 20px;
+    left: auto;
+}
+
+/* Dark mode for back-to-top */
+body.dark-mode #back-to-top {
+    background-color: var(--primary-color); /* Uses dark mode primary color */
+    color: #121212; /* Dark text for contrast on light primary button */
+}
+body.dark-mode #back-to-top:hover {
+    background-color: var(--link-hover-color); /* Dark mode hover color */
+}
+
+/* === Articles Grid & Cards (Shared & Specific) === */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.article-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.article-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+.article-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #555;
+    flex-grow: 1; /* Pushes button to bottom */
+}
+.article-card .article-meta {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+.article-card a.button-primary, .article-card a.button-secondary { /* Ensure buttons are styled */
+    align-self: flex-start; /* Align button to the right in RTL */
+}
+.articles-grid.full-width-articles .article-card { /* For articles page where cards might be wider */
+    /* Potentially different styles if needed, for now uses base .article-card */
+}
+
+
+/* === Tools Grid & Cards (Shared & Specific) === */
+.tools-grid { /* For homepage tools */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.extensive-tools-grid { /* For tools page */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.tool-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.tool-card span:not(.tool-icon-img) { /* Placeholder for text icon on homepage */
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+.tool-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.tool-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem; /* Ensure space before button */
+    flex-grow: 1;
+}
+.tool-card a.button-secondary {
+    align-self: center;
+}
+
+/* Tools Page - Filters & Tabs */
+.tools-filters {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.tabs .tab-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--card-border);
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    transition: background-color 0.3s, color 0.3s;
+}
+.tabs .tab-button.active, .tabs .tab-button:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border-color: var(--primary-color);
+}
+.search-tools {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    min-width: 250px;
+}
+
+
+/* === Mysterious Links Section / Page === */
+.mysterious-links-section ul li { /* Homepage style */
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+}
+.mysterious-links-section ul li a {
+    font-weight: 500;
+}
+
+.mysterious-links-list { /* For dedicated page */
+    list-style-type: none;
+    padding: 0;
+}
+.mysterious-links-list li {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.mysterious-links-list li h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+.mysterious-links-list li h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.mysterious-links-list li h3 a:hover {
+    text-decoration: underline;
+}
+.mysterious-links-list li p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+.mysterious-links-list li .link-category {
+    font-size: 0.85rem;
+    color: var(--button-text-color);
+    background-color: var(--secondary-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* === Contact Page === */
+.contact-form {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 0 auto 2rem auto; /* Center form */
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.contact-form .button-primary {
+    width: auto;
+    padding: 0.75rem 2rem;
+}
+.form-status-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+.form-status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    display: block;
+}
+.form-status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+.contact-info-section {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--header-bg); /* Light background */
+    border-radius: 8px;
+}
+.contact-info-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+.contact-info-section ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+
+/* === Pagination === */
+.pagination {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+.pagination ul {
+    display: inline-flex; /* Changed from inline-block to inline-flex for better alignment */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.pagination ul li {
+    margin: 0 3px; /* Adjusted margin for RTL */
+}
+.pagination ul li a {
+    display: block;
+    padding: 0.5rem 0.85rem;
+    color: var(--primary-color);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pagination ul li a:hover,
+.pagination ul li a.active {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border-color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* === Footer === */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    padding: 3rem 0 1.5rem;
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+}
+.footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+.footer-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+.footer-column p, .footer-column ul li a {
+    font-size: 0.95rem;
+    color: #adb5bd;
+}
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+.footer-column ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.social-icons a {
+    margin-left: 10px; /* Reversed for RTL */
+    color: #adb5bd;
+    font-size: 1.1rem;
+}
+.social-icons a:first-child {
+    margin-left: 0;
+}
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #495057;
+    font-size: 0.9rem;
+    color: #adb5bd;
+}
+.copyright p {
+    margin-bottom: 0;
+}
+
+/* === Admin Login Page Styles === */
+body.admin-login-page {
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column; /* Ensure footer (if any) is below */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: right;
+}
+.login-container {
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    margin: auto; /* Center the container if body is flex */
+}
+
+/* Login Status Messages */
+.login-status-message {
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.95rem;
+    display: none; /* Hidden by default, shown by JS */
+}
+.login-status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+.login-status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.login-logo a { /* Style copied from main logo for consistency */
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.8rem;
+}
+.login-form .form-group { /* Re-use .form-group from contact */
+    margin-bottom: 1.5rem;
+}
+.login-form label { /* Re-use label style */
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] { /* Re-use input style */
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: var(--font-family-arabic);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus,
+.login-form input[type="text"]:focus { /* Re-use focus style */
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+.login-form .button-primary { /* Re-use button style */
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.login-footer-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.login-footer-links a {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+}
+.login-footer-links a:hover {
+    color: var(--primary-color);
+}
+
+
+/* === Dark Mode (Basic Example - can be expanded with JS) === */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1e1e1e;
+    --card-bg: #2c2c2c;
+    --card-border: #444444;
+    --footer-bg: #1e1e1e;
+    --primary-color: #3a9eff; /* Lighter blue for dark mode */
+    --link-color: #3a9eff;
+    --link-hover-color: #6ab7ff;
+    --button-bg: #3a9eff;
+    --button-hover-bg: #6ab7ff;
+}
+body.dark-mode header nav ul li a,
+body.dark-mode .logo a {
+    color: var(--text-color); /* Ensure logo text also changes */
+}
+body.dark-mode header nav ul li a.active,
+body.dark-mode header nav ul li a:hover,
+body.dark-mode .logo a:hover {
+    color: var(--primary-color);
+}
+body.dark-mode header nav ul li a.active::after {
+    background-color: var(--primary-color);
+}
+body.dark-mode .article-card p,
+body.dark-mode .tool-card p,
+body.dark-mode .mysterious-links-list li p {
+    color: #bbbbbb;
+}
+body.dark-mode .cta-button { /* Hero button */
+    background-color: var(--text-color); /* Light text on dark primary */
+    color: var(--background-color); /* Dark text on light button */
+}
+body.dark-mode .cta-button:hover {
+    background-color: #cccccc; /* Slightly darker light color */
+}
+
+body.dark-mode .page-header {
+    background-color: #1e1e1e; /* Darker than card, lighter than body */
+}
+body.dark-mode .page-header h1 {
+    color: var(--primary-color);
+}
+body.dark-mode .page-header p {
+    color: #a0a0a0;
+}
+body.dark-mode .tabs .tab-button {
+    color: var(--text-color);
+    border-color: var(--card-border);
+}
+body.dark-mode .tabs .tab-button.active,
+body.dark-mode .tabs .tab-button:hover {
+    background-color: var(--primary-color);
+    color: #121212; /* Dark text on primary button */
+    border-color: var(--primary-color);
+}
+body.dark-mode .search-tools {
+    background-color: #2c2c2c;
+    border-color: #444444;
+    color: var(--text-color);
+}
+body.dark-mode .contact-form {
+    background-color: #1e1e1e; /* Slightly different from card for emphasis */
+}
+body.dark-mode .form-group label {
+    color: #c0c0c0;
+}
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="email"],
+body.dark-mode .form-group textarea {
+    background-color: #2c2c2c;
+    border-color: #444444;
+    color: var(--text-color);
+}
+body.dark-mode .form-group input[type="text"]:focus,
+body.dark-mode .form-group input[type="email"]:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(58, 158, 255, 0.25); /* Adjusted for dark primary */
+}
+body.dark-mode .contact-info-section {
+    background-color: #1e1e1e;
+}
+body.dark-mode .contact-info-section h2 {
+    color: var(--text-color);
+}
+body.dark-mode .contact-info-section ul li,
+body.dark-mode .contact-info-section ul li a {
+    color: #b0b0b0;
+}
+body.dark-mode .pagination ul li a {
+    color: var(--primary-color);
+    border-color: var(--card-border);
+}
+body.dark-mode .pagination ul li a:hover,
+body.dark-mode .pagination ul li a.active {
+    background-color: var(--primary-color);
+    color: #121212; /* Dark text on primary button */
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .footer-column p,
+body.dark-mode .footer-column ul li a,
+body.dark-mode .social-icons a,
+body.dark-mode .copyright {
+    color: #b0b0b0;
+}
+body.dark-mode .footer-column h4 {
+    color: var(--primary-color);
+}
+body.dark-mode .footer-column ul li a:hover,
+body.dark-mode .social-icons a:hover {
+    color: #ffffff;
+}
+/* Dark mode for admin login */
+body.dark-mode.admin-login-page {
+    background-color: #1a1a1a; /* Slightly different dark for admin page body */
+}
+body.dark-mode .login-container {
+    background-color: #2c2c2c; /* Card dark color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+body.dark-mode .login-logo a {
+    color: var(--primary-color); /* Use dark mode primary */
+}
+body.dark-mode .login-container h2 {
+    color: var(--text-color);
+}
+body.dark-mode .login-form label {
+    color: #c0c0c0;
+}
+body.dark-mode .login-form input[type="email"],
+body.dark-mode .login-form input[type="password"],
+body.dark-mode .login-form input[type="text"] {
+    background-color: #333333; /* Darker input fields */
+    border-color: #555555;
+    color: var(--text-color);
+}
+body.dark-mode .login-form input[type="email"]:focus,
+body.dark-mode .login-form input[type="password"]:focus,
+body.dark-mode .login-form input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(58, 158, 255, 0.25);
+}
+body.dark-mode .login-footer-links a {
+    color: #a0a0a0;
+}
+body.dark-mode .login-footer-links a:hover {
+    color: var(--primary-color);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column; /* Stack sidebar and content on small screens */
+    }
+    .sidebar {
+        width: 100%;
+        height: auto; /* Auto height for sidebar */
+        min-width: unset;
+        border-left: none;
+        border-bottom: 1px solid var(--card-border); /* Border at the bottom */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    html[dir="ltr"] .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+    }
+    .admin-content {
+        height: auto; /* Adjust height */
+    }
+    .sidebar-footer {
+        padding-bottom: 1rem; /* Ensure padding at bottom */
+    }
+
+    #back-to-top { /* Make button smaller on smaller screens */
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        line-height: 40px;
+        bottom: 15px;
+        left: 15px;
+    }
+    html[dir="rtl"] #back-to-top {
+        right: 15px;
+        left: auto;
+    }
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    gap: 0.5rem; /* Ensure some gap if items wrap */
+}
+.blog-search-form { /* Adjust search form for mobile */
+    width: 100%; /* Full width */
+    max-width: none;
+    margin-top: 0.5rem;
+    order: 3; /* Place it below nav and theme button if they are also column */
+    }
+    header nav {
+        margin-top: 1rem;
+        width: 100%;
+    }
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    header nav ul li {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        text-align: right;
+    }
+    header nav ul li a {
+        display: block;
+        padding: 0.5rem;
+    }
+    .theme-button {
+        align-self: flex-end;
+        margin-top: -2.5rem;
+        order: 2; /* Ensure theme button is after nav if they stack */
+    }
+    header nav {
+        order: 1; /* Nav first */
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+    }
+    .footer-column {
+        min-width: auto;
+        margin-bottom: 1.5rem;
+    }
+    .footer-column:last-child {
+        margin-bottom: 0;
+    }
+
+    .tools-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .tabs {
+        display: flex;
+        flex-wrap: wrap; /* Allow tabs to wrap on small screens */
+        gap: 0.5rem;
+        margin-bottom: 1rem; /* Space between tabs and search */
+    }
+    .tabs .tab-button {
+        flex-grow: 1; /* Allow buttons to grow and fill space */
+    }
+    .search-tools {
+        width: 100%;
+    }
+    .login-container {
+        margin: 1rem; /* Add some margin on small screens */
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* === Additional Styles for ManageContent & Settings (Advanced) === */
+
+/* ManageContent.jsx specific */
+.content-form .form-group textarea#content { /* Specific to main content textarea in ManageContent */
+    min-height: 250px; /* More space for main article content */
+}
+.save-status {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-right: auto; /* Pushes it to the left in RTL, to the right in LTR */
+    padding: 0.5rem;
+    font-style: italic;
+    opacity: 0; /* Hidden by default, transition in */
+    transition: opacity 0.5s ease-in-out;
+}
+.save-status.visible { /* Add this class via JS to show status */
+    opacity: 1;
+}
+
+body.dark-mode .save-status {
+    color: var(--secondary-color);
+}
+
+.media-manager-section .media-list {
+    margin-top: 1rem;
+    display: grid; /* Changed to grid for better layout */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 1rem;
+}
+.media-manager-section .media-item {
+    display: flex;
+    flex-direction: column; /* Stack image, input, button */
+    align-items: flex-start; /* Align items to start */
+    gap: 0.5rem; /* Reduced gap */
+    padding: 0.75rem; /* Adjusted padding */
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    background-color: var(--background-color); /* Ensure bg for items */
+}
+.media-manager-section .media-item img,
+.media-manager-section .media-item .media-file-placeholder { /* Placeholder for non-image files */
+    width: 100%; /* Full width of its grid cell */
+    height: 120px; /* Fixed height for consistency */
+    object-fit: cover; /* Cover for images */
+    border-radius: 3px;
+    margin-bottom: 0.5rem; /* Space below image/placeholder */
+    background-color: #e9ecef; /* Placeholder bg */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+.media-manager-section .media-item input[type="text"] { /* For Alt text */
+    width: 100%; /* Full width */
+    padding: 0.5rem 0.75rem; /* Adjusted padding */
+    font-size: 0.85rem; /* Adjusted font size */
+    border: 1px solid var(--card-border);
+    border-radius: 3px;
+}
+.media-manager-section .media-item .button-delete {
+    align-self: flex-end; /* Button to the end */
+    font-size: 0.8rem; /* Smaller delete button */
+    padding: 0.3rem 0.6rem;
+}
+
+
+.comments-manager-section .comments-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+.comments-manager-section .comment-item {
+    background-color: var(--header-bg); /* Use header-bg for slight differentiation */
+    padding: 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.comments-manager-section .comment-item p {
+    margin-bottom: 0.5rem;
+}
+.comments-manager-section .comment-item p strong {
+    color: var(--primary-color);
+}
+.comments-manager-section .comment-item small.comment-meta {
+    display: block;
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+}
+.comments-manager-section .comment-item .comment-status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 10px;
+    color: white;
+    margin-left: 0.5rem; /* For RTL */
+}
+html[dir="rtl"] .comments-manager-section .comment-item .comment-status-badge {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+.comments-manager-section .comment-item .status-approved { background-color: #28a745; } /* Green */
+.comments-manager-section .comment-item .status-pending { background-color: #ffc107; color: #212529;} /* Yellow */
+.comments-manager-section .comment-item .status-spam { background-color: #dc3545; } /* Red */
+
+
+.comments-manager-section .comment-actions {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 0.5rem;
+}
+.comments-manager-section .comment-actions .button-primary.small,
+.comments-manager-section .comment-actions .button-secondary.small,
+.comments-manager-section .comment-actions .button-delete.small {
+    padding: 0.3rem 0.7rem; /* Adjusted padding */
+    font-size: 0.8rem;
+}
+.comments-manager-section .comment-item textarea { /* For suggested reply */
+    margin-top: 0.75rem;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+/* Dark Mode for new sections in ManageContent */
+body.dark-mode .media-manager-section .media-item {
+    border-color: #555;
+    background-color: var(--card-bg);
+}
+body.dark-mode .media-manager-section .media-item img,
+body.dark-mode .media-manager-section .media-item .media-file-placeholder {
+    background-color: #3a3f44; /* Darker placeholder bg */
+}
+body.dark-mode .media-manager-section .media-item input[type="text"] {
+    background-color: #333;
+    border-color: #555;
+    color: var(--text-color);
+}
+
+body.dark-mode .comments-manager-section .comment-item {
+    background-color: var(--card-bg);
+    border-color: #555;
+}
+body.dark-mode .comments-manager-section .comment-item small.comment-meta {
+    color: var(--secondary-color);
+}
+body.dark-mode .comments-manager-section .comment-item .status-pending {
+    color: #212529; /* Keep dark text on yellow for readability */
+}
+body.dark-mode .comments-manager-section .comment-item textarea {
+    background-color: #333;
+    border-color: #555;
+    color: var(--text-color);
+}
+
+/* Settings Page - Advanced Settings Section */
+.settings-page .admin-section .form-group label input[type="checkbox"] { /* Ensure checkbox alignment in settings */
+    width: auto;
+    margin-left: 0.5rem;
+}
+html[dir="rtl"] .settings-page .admin-section .form-group label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+.settings-page .admin-section .button-delete { /* For Reset button */
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+.settings-page .admin-section .button-delete:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+body.dark-mode .settings-page .admin-section .button-delete {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+body.dark-mode .settings-page .admin-section .button-delete:hover {
+    background-color: #a71d2a;
+    border-color: #941a25;
+}
+
+/* === Ad Placeholder Styles === */
+.ad-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgba(0,0,0,0.03);
+    border: 1px dashed var(--secondary-color);
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    min-height: 90px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.notification-bar .top-ad-banner.ad-placeholder { /* Specific for ad in notification bar */
+    width: 100%;
+    max-width: 728px;
+    min-height: 70px;
+    margin-top: 0.5rem;
+    background-color: rgba(var(--button-text-color-rgb, 255,255,255),0.1); /* Use RGB for opacity on button text color */
+    border-color: rgba(var(--button-text-color-rgb, 255,255,255),0.3);
+    color: var(--button-text-color);
+}
+/* Ensure --button-text-color-rgb is defined if not already */
+:root {
+    --button-text-color-rgb: 255,255,255; /* Default to white */
+}
+body.dark-mode {
+    --button-text-color-rgb: 224,224,224; /* Lighter text for dark mode buttons */
+}
+
+
+.featured-content-ad.ad-placeholder {
+    min-height: 150px;
+}
+.featured-tools .tool-card.ad-placeholder.featured-content-ad { /* If it's also a tool-card */
+    border-style: dashed;
+    background-color: rgba(0,0,0,0.02);
+}
+
+
+.ad-banner-top-article.ad-placeholder {
+    max-width: 728px;
+    min-height: 90px;
+    margin: 1.5rem auto;
+}
+
+.ad-native.ad-placeholder {
+    width: 100%;
+    max-width: 600px;
+    min-height: 120px;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    background-color: rgba(0,0,0,0.02);
+}
+
+.sidebar-article .ad-sidebar.ad-placeholder {
+    width: 100%;
+    max-width: 300px;
+    min-height: 250px;
+    margin: 1rem auto;
+}
+.sidebar-article .ad-sidebar.ad-placeholder + .ad-sidebar.ad-placeholder {
+    margin-top: 1.5rem;
+}
+
+
+.ad-bottom-article.ad-placeholder {
+    max-width: 728px;
+    min-height: 100px;
+    margin: 2rem auto 1rem auto;
+}
+.ad-bottom-article .suggested-tool-ad {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Dark Mode for Ad Placeholders */
+body.dark-mode .ad-placeholder {
+    background-color: rgba(255,255,255,0.03);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+body.dark-mode .notification-bar .top-ad-banner.ad-placeholder {
+    background-color: rgba(var(--text-color-rgb, 224,224,224),0.05); /* text-color-rgb for dark mode */
+    border-color: rgba(var(--text-color-rgb, 224,224,224),0.2);
+    color: var(--text-color);
+}
+body.dark-mode .featured-tools .tool-card.ad-placeholder.featured-content-ad {
+    background-color: rgba(255,255,255,0.02);
+}
+body.dark-mode .ad-native.ad-placeholder {
+    background-color: rgba(255,255,255,0.02);
+}
+body.dark-mode .ad-bottom-article .suggested-tool-ad {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Article Page Layout & Detailed Styles */
+.article-page-layout {
+    display: flex;
+    flex-direction: row; /* Default for larger screens */
+    gap: 2.5rem; /* Increased gap */
+}
+.single-article-content {
+    flex: 1; /* Allow it to grow */
+    min-width: 0; /* Important for flex items to shrink correctly */
+    max-width: 75%; /* Give more space to article content */
+}
+.sidebar-article {
+    flex: 0 0 280px; /* Fixed width for sidebar, doesn't grow, can shrink a bit */
+    padding-top: 1rem;
+}
+@media (max-width: 992px) { /* Adjust layout for medium screens */
+    .single-article-content {
+        max-width: 65%;
+    }
+    .sidebar-article {
+        flex-basis: 240px; /* Slightly smaller sidebar */
+    }
+}
+@media (max-width: 768px) { /* Stack on smaller screens */
+    .article-page-layout {
+        flex-direction: column;
+    }
+    .single-article-content {
+        max-width: 100%;
+    }
+    .sidebar-article {
+        flex-basis: auto; /* Auto height when stacked */
+        width: 100%;
+        margin-top: 2rem;
+    }
+}
+
+
+.sidebar-article h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--card-border);
+}
+.sidebar-article ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar-article ul li {
+    margin-bottom: 0.6rem;
+}
+.sidebar-article ul li a {
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+.sidebar-article ul li a:hover {
+    color: var(--primary-color);
+}
+
+.article-header-detailed h1 {
+    font-size: 2.2rem; /* Adjusted from 2.4rem */
+    margin-bottom: 0.5rem;
+    color: var(--text-color); /* Use default text color for article heading */
+}
+.article-meta-detailed {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+.article-meta-detailed a {
+    color: var(--secondary-color);
+}
+.article-meta-detailed a:hover {
+    color: var(--primary-color);
+}
+.detailed-article-image {
+    width: 100%;
+    max-height: 400px; /* Adjusted from 450px */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+.article-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+.article-body h2 {
+    font-size: 1.5rem; /* Adjusted from 1.6rem */
+    margin-top: 1.8rem; /* Adjusted */
+    margin-bottom: 0.8rem; /* Adjusted */
+    color: var(--primary-color);
+}
+.article-tags {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+.article-tags strong {
+    margin-left: 0.5rem; /* For RTL */
+}
+html[dir="rtl"] .article-tags strong {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+.article-tags a {
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.6rem; /* Adjusted padding */
+    background-color: var(--header-bg);
+    border-radius: 4px;
+    color: var(--secondary-color);
+    font-size: 0.9rem; /* Slightly smaller tag font */
+}
+.article-tags a:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+}
+.comments-section {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+}
+.comments-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Dark mode for article page specifics */
+body.dark-mode .sidebar-article h3 {
+    border-bottom-color: var(--card-border);
+}
+body.dark-mode .sidebar-article ul li a {
+    color: var(--text-color);
+}
+body.dark-mode .article-header-detailed h1 {
+    color: var(--text-color);
+}
+body.dark-mode .article-meta-detailed,
+body.dark-mode .article-meta-detailed a {
+    color: var(--secondary-color);
+}
+body.dark-mode .article-tags a {
+    background-color: var(--header-bg); /* Use dark header bg */
+    color: var(--secondary-color);
+}
+body.dark-mode .article-tags a:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+body.dark-mode .comments-section {
+    border-top-color: var(--card-border);
+}
+
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 1.5rem;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+    .latest-articles h2, .featured-tools h2, .mysterious-links-section h2,
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+    .page-header p {
+        font-size: 0.95rem;
+    }
+    .article-card h3, .tool-card h3, .mysterious-links-list li h3 {
+        font-size: 1.2rem;
+    }
+    .login-container h2 {
+        font-size: 1.5rem;
+    }
+    .login-container {
+        padding: 1.5rem 1rem;
+    }
+}

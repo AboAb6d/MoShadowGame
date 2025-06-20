@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin_dashboard.html
+Disallow: /pages/admin_login.html
+Disallow: /src/
+Disallow: /node_modules/
+
+# Allow search engines to crawl sitemap
+Sitemap: https://www.aboabed.dev/sitemap.xml # Replace [URL_للموقع] with actual URL later
