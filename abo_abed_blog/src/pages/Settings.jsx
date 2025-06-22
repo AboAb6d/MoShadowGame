@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 function Settings() {
     // Example state for settings - in a real app, this would be fetched and updated
-    const [blogName, setBlogName] = useState('مدونة أبو عبد التقنية');
+    const [blogName, setBlogName] = useState('ابو عابد - Abo Abed');
     const [theme, setTheme] = useState('light');
     const [adsTop, setAdsTop] = useState(true);
     const [adsSidebar, setAdsSidebar] = useState(false);
-    const [customAdCode, setCustomAdCode] = useState('');
-    const [defaultSiteTitle, setDefaultSiteTitle] = useState('مدونة أبو عبد | تقنية، أدوات، والمزيد');
-    const [defaultSiteDescription, setDefaultSiteDescription] = useState('مدونة شخصية تهتم بمشاركة أحدث المقالات والأدوات في عالم التقنية والبرمجة.');
-    const [mainKeywords, setMainKeywords] = useState('تقنية, برمجة, أدوات ويب, أبو عبد');
+    // const [customAdCode, setCustomAdCode] = useState(''); // Removed, better in Monetization
+    const [defaultSiteTitle, setDefaultSiteTitle] = useState('ابو عابد - Abo Abed | تقنية، أدوات، والمزيد');
+    const [defaultSiteDescription, setDefaultSiteDescription] = useState('مدونة ابو عابد - Abo Abed تهتم بمشاركة أحدث المقالات والأدوات في عالم التقنية والبرمجة.');
+    const [mainKeywords, setMainKeywords] = useState('تقنية, برمجة, أدوات ويب, ابو عابد, Abo Abed');
 
     // State for advanced settings
     const [enableDefaultDarkMode, setEnableDefaultDarkMode] = useState(false);
@@ -30,13 +30,13 @@ function Settings() {
     const handleResetSettings = () => {
         if (window.confirm("هل أنت متأكد أنك تريد إعادة تعيين جميع الإعدادات إلى الوضع الافتراضي؟ هذا الإجراء لا يمكن التراجع عنه.")) {
             // Reset state variables to their initial defaults (or fetch from a 'default config')
-            setBlogName('مدونة أبو عبد التقنية');
+            setBlogName('ابو عابد - Abo Abed');
             setTheme('light');
             setAdsTop(true);
             setAdsSidebar(false);
-            setDefaultSiteTitle('مدونة أبو عبد | تقنية، أدوات، والمزيد');
-            setDefaultSiteDescription('مدونة شخصية تهتم بمشاركة أحدث المقالات والأدوات في عالم التقنية والبرمجة.');
-            setMainKeywords('تقنية, برمجة, أدوات ويب, أبو عبد');
+            setDefaultSiteTitle('ابو عابد - Abo Abed | تقنية، أدوات، والمزيد');
+            setDefaultSiteDescription('مدونة ابو عابد - Abo Abed تهتم بمشاركة أحدث المقالات والأدوات في عالم التقنية والبرمجة.');
+            setMainKeywords('تقنية, برمجة, أدوات ويب, ابو عابد, Abo Abed');
             setEnableDefaultDarkMode(false);
             setEnableStealthMode(false);
             alert("تمت إعادة تعيين الإعدادات إلى الوضع الافتراضي (وهمي)!");

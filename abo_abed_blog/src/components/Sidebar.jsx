@@ -12,7 +12,10 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <h3>لوحة تحكم أبو عبد</h3>
+        <Link to="/admin/">
+          <img src="/images/logo.png" alt="شعار ابو عابد - لوحة التحكم" className="sidebar-logo" />
+        </Link>
+        {/* <h3>لوحة تحكم أبو عبد</h3> */}
       </div>
       <nav className="sidebar-nav">
         <ul>
